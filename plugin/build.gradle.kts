@@ -26,7 +26,11 @@ dependencies {
 }
 
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(17)
+}
+
+tasks.jar {
+    archiveBaseName = "bdebug-plugin"
 }
 
 bukkit {

@@ -2,19 +2,18 @@
   "schemaVersion": 1,
   "id": "bdebug",
   "version": "${version}",
-  "name": "bdebug",
-  "description": "",
-  "authors": [],
-  "contact": {},
+  "name": "bDebug",
+  "description": "Mod to get Debug information to Minecraft server developer",
+  "authors": ["inotbaggi"],
+  "contact": {
+    "homepage": "https://inotbaggi.t.me"
+  },
   "license": "All-Rights-Reserved",
   "icon": "assets/bdebug/icon.png",
   "environment": "client",
   "entrypoints": {
     "client": [
       "me.baggi.bdebug.client.BDebug"
-    ],
-    "main": [
-      "me.baggi.bdebug.Bdebug"
     ]
   },
   "mixins": [
