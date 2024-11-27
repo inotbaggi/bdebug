@@ -2,6 +2,7 @@ package me.baggi.bdebug.client;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import me.baggi.bdebug.PageData;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.util.Identifier;
@@ -14,9 +15,9 @@ import java.util.List;
 public class BDebug implements ClientModInitializer {
     public final Identifier DEBUG_CHANNEL = new Identifier("debugmod", "info");
     private final Gson GSON = new Gson();
-    private final Type LIST_TYPE = new TypeToken<List<List<String>>>() {}.getType();
+    private final Type PAGES_TYPE = new TypeToken<List<PageData>>() {}.getType();
 
-    private List<List<String>> debugPages = new ArrayList<>();
+    private List<PageData> debugPages = new ArrayList<>();
 
     private boolean isEnabled = false;
 
@@ -41,7 +42,7 @@ public class BDebug implements ClientModInitializer {
             buf.readBytes(jsonBytes);
 
             String jsonData = new String(jsonBytes, StandardCharsets.UTF_8);
-            List<List<String>> receivedPages = GSON.fromJson(jsonData, LIST_TYPE);
+            List<PageData> receivedPages = GSON.fromJson(jsonData, PAGES_TYPE);
 
             if (receivedPages != null) {
                 debugPages = receivedPages;
@@ -49,7 +50,7 @@ public class BDebug implements ClientModInitializer {
         });
     }
 
-    public List<List<String>> getDebugPages() {
+    public List<PageData> getDebugPages() {
         return debugPages;
     }
 

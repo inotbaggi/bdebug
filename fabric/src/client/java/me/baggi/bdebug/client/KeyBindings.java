@@ -96,7 +96,7 @@ public class KeyBindings {
 
     private int calculateMaxScroll(MinecraftClient client) {
         int pageHeight = modInstance.getDebugPages()
-                .get(modInstance.getCurrentPage()).size() * client.textRenderer.fontHeight;
+                .get(modInstance.getCurrentPage()).getLines().size() * client.textRenderer.fontHeight;
         return Math.max(0, pageHeight - client.getWindow().getScaledHeight());
     }
 }

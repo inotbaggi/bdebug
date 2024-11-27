@@ -1,8 +1,9 @@
-package me.baggi.bdebug
+package me.baggi.bdebug.command
 
 import co.aikar.commands.BaseCommand
 import co.aikar.commands.annotation.CommandAlias
 import co.aikar.commands.annotation.Subcommand
+import me.baggi.bdebug.App
 import org.bukkit.command.CommandSender
 
 @CommandAlias("bdebug")

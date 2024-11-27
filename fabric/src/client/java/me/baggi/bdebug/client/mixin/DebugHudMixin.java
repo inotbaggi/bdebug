@@ -41,9 +41,9 @@ public class DebugHudMixin {
             var currentPage = modInstance.getDebugPages().get(currentPageIndex);
 
             int startY = 10 - scrollOffset;
-            renderPageContent(context, textRenderer, currentPage, startY);
+            renderPageContent(context, textRenderer, currentPage.getLines(), startY);
 
-            renderFooter(context, textRenderer, currentPageIndex, modInstance.getDebugPages().size(), client);
+            renderFooter(context, textRenderer, currentPageIndex, modInstance.getDebugPages().size(), client, currentPage.getId());
         }
     }
 
@@ -63,8 +63,15 @@ public class DebugHudMixin {
     }
 
     @Unique
-    private void renderFooter(DrawContext context, TextRenderer textRenderer, int currentPageIndex, int totalPages, MinecraftClient client) {
-        String footer = (currentPageIndex + 1) + "/" + totalPages;
+    private void renderFooter(
+            DrawContext context,
+            TextRenderer textRenderer,
+            int currentPageIndex,
+            int totalPages,
+            MinecraftClient client,
+            String pageId
+    ) {
+        String footer = "[" + pageId + "] " + (currentPageIndex + 1) + "/" + totalPages;
         context.drawTextWithShadow(
                 textRenderer,
                 footer,
